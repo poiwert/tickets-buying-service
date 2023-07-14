@@ -3,7 +3,7 @@ int quantity_of_tickets = 0,money_spended_summary = 0;
 int description_function() {
         printf("\tDescription\n");
         if (quantity_of_tickets == 0) {
-            printf("Watch something, we need some info\n");
+            printf("You haven't watched films\n");
             printf("__________________________________\n");
             printf("\n");
         } else {
