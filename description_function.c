@@ -1,8 +1,6 @@
 // Глобальні змінні
 int quantity_of_tickets = 0,money_spended_summary = 0;
 int description_function() {
-    while (1)
-    {
         printf("\tDescription\n");
         if (quantity_of_tickets == 0) {
             printf("Watch something, we need some info\n");
@@ -15,5 +13,4 @@ int description_function() {
             
         }
         return account_info();
-    }
 }
