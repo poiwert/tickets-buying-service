@@ -5,4 +5,7 @@ int film_info(int filmname) {
      else if (filmname == 2) {
         printf("The film's screenplay is based on the book 'American Prometheus: The Triumph and Tragedy of J. Robert Oppenheimer' written by Kai Bird and Martin Sherwin, which received the Pulitzer Prize for Biography or Autobiography. The main character is an American physicist who, under his leadership, developed the atomic bomb during World War II.\n");
     }
+     else if (filmname == 3) {
+        printf("Family comedy, telling the story of the world's most famous doll - what if Barbie were a real girl living among us? Too imperfect for the perfect world of Barbiedom, she ends up being banished and encounters the harsh reality of the human world.\n");
+    }
 }
