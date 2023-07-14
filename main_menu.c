@@ -1,7 +1,11 @@
 #include <stdio.h>
 #include <string.h>
 
+int account_info(){}
+int buy_tickets(){}
+
 int main(){
+    while (1) {
     int menu_section, info, buy;
     printf("Choose menu section\n");
     printf("\t Account(1)\t Buy(2) \n");
@@ -18,4 +22,6 @@ int main(){
             printf("Input another key\n");
             break;
         }
+    }
+    return 0;
 }
