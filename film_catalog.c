@@ -3,11 +3,19 @@ int film_name;
 
 int film_catalog() {        
     int buy_tickets_menu_section, info, return_function;
-        printf("\tChoose a film \n");
-        printf("\tMission impossible: Reckoning. Part One (1\n");
-        printf("\tOppenheimer (2)\n");
-        printf("\tBarby (3)\n");
-        printf("\tExit (0)\n");
+    while(1){
+        printf("__________________________________\n");
+        printf("\t|               |\n");
+        printf("\t| Choose a film |\n");
+        printf("\t|               |\n");
+        printf("__________________________________\n");
+        printf("| Mission impossible: Reckoning. Part One (1)   \n");
+        printf("__________________________________\n");
+        printf("| Oppenheimer (2)  |\n");
+        printf("__________________________________\n");
+        printf("| Heroes of the golden masks (3)   \n");
+        printf("__________________________________\n");
+        printf("\t  Exit (0)\n");
         scanf("%d", &buy_tickets_menu_section);
         
         switch (buy_tickets_menu_section) {
@@ -27,11 +35,12 @@ int film_catalog() {
                 info=film_info(film_name);
                 break;
             case 0:
-                printf("Exit to main menu\n");
+                printf("Exit to main menu\n");  
                 return_function = main();
                 break; 
             default:
                 printf("Input another key\n");
                 break;
         }
+    }
 }
