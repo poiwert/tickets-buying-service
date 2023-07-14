@@ -8,4 +8,11 @@ int film_info(int filmname) {
      else if (film_name == 3) {
         printf("Family comedy, telling the story of the world's most famous doll - what if Barbie were a real girl living among us? Too imperfect for the perfect world of Barbiedom, she ends up being banished and encounters the harsh reality of the human world.\n");
     }
+
+    int buy_tickets_choice;
+    printf("Would you like to buy tickets for this film? (1 - Yes, 0 - No): ");
+    scanf("%d", &buy_tickets_choice);
+    if (buy_tickets_choice == 1) {
+        purchasing_function();
+    }
 }
