@@ -2,6 +2,8 @@
 #ifndef MENU_STYLES_H
 #define MENU_STYLES_H
 
+#include <stdio.h>
+
 void print_menu_styles() {
     printf(" Choose menu section\n");
     printf("__________________________________\n");
@@ -11,10 +13,11 @@ void print_menu_styles() {
 
 #endif
 
-// main.c
+// main_menu.c
 #include <stdio.h>
 #include <string.h>
 #include "menu_styles.h"
+#include "categories.h"
 
 int account_info(){}
 int film_catalog(){}
