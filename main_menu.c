@@ -2,13 +2,15 @@
 #include <string.h>
 
 int account_info(){}
-int buy_tickets(){}
+int film_catalog(){}
 
 int main(){
     while (1) {
     int menu_section, info, buy;
-    printf("Choose menu section\n");
-    printf("\t Account(1)\t Buy(2) \n");
+    printf("      Choose menu section\n");
+    printf("__________________________________\n");
+    printf("| Account (1)   Film catalog (2) |\n");
+    printf("__________________________________\n");
     scanf("%d", &menu_section);
     
     switch (menu_section) {
@@ -16,7 +18,7 @@ int main(){
             info = account_info();
             break;
         case 2:
-            buy = buy_tickets();
+            buy = film_catalog();
             break;
         default:
             printf("Input another key\n");
