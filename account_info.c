@@ -1,4 +1,3 @@
-int return_function;
 int account_info() {
     int account_info_menu_section,desc, act_session;
         while (1) {
@@ -10,7 +9,7 @@ int account_info() {
         switch (account_info_menu_section) {
             case 0:
                 printf("Exit to main menu");
-                return_function = main();
+                return main();
                 break;
             case 1:
                 desc = description_function();
