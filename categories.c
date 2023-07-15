@@ -1,8 +1,8 @@
 #include "categories.h"
 
 const char* categories[] = {
-    "Account",
-    "Film catalog"
+    "Information about account",
+    "Film catalog and buy section"
 };
 
 const int num_categories = sizeof(categories) / sizeof(categories[0]);
