@@ -33,33 +33,18 @@ int film_catalog() {
     strcpy(movies[2].name, "Barby");
     strcpy(movies[2].description, "Family comedy, telling the story of the world's most famous doll - what if Barbie were a real girl living among us? Too imperfect for the perfect world of Barbiedom, she ends up being banished and encounters the harsh reality of the human world.");
 
-    while(1){
+    while (1) {
         display_film_catalog();
         scanf("%d", &buy_tickets_menu_section);
-        
-        switch (buy_tickets_menu_section) {
-            case 1:
-                printf("You have chosen: Mission impossible: Reckoning. Part One\n");
-                film_name = 1;
-                info=film_info(film_name);
-                break;
-            case 2:
-                printf("You have chosen: Oppenheimer\n");
-                film_name = 2;
-                info=film_info(film_name);
-                break;
-            case 3:
-                printf("You have chosen: Barby\n");
-                film_name = 3;
-                info=film_info(film_name);
-                break;
-            case 0:
-                printf("Exit to main menu\n");  
-                return_function = main();
-                break; 
-            default:
-                printf("Input another key\n");
-                break;
+
+        if (buy_tickets_menu_section >= 1 && buy_tickets_menu_section <= 3) {
+            printf("You have chosen: %s\n", movies[buy_tickets_menu_section - 1].name);
+            cinema_info(movies[buy_tickets_menu_section - 1]);
+        } else if (buy_tickets_menu_section == 0) {
+            printf("Exiting to the main menu\n");
+            return;
+        } else {
+            printf("Invalid input. Please try again.\n");
         }
     }
 }
