@@ -6,8 +6,6 @@
 extern const char* categories[];
 extern const int num_categories;
 
-int account_info() {}
-int buy() {}
 
 void display_categories() {
     for (int i = 0; i < num_categories; i++) {
