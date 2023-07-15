@@ -1,5 +1,5 @@
 int account_info() {
-    int account_info_menu_section,desc, act_session;
+    int account_info_menu_section;
         while (1) {
         printf("(Enter '0' to go back to the main menu)\n"); 
         printf("--Pick info that you want to see--\n");
@@ -12,10 +12,10 @@ int account_info() {
                 return main();
                 break;
             case 1:
-                desc = description_function();
+                description_function();
                 break;
             case 2:
-                act_session=active_session();
+                active_session();
                 break;
             default:
                 printf("Input another key\n");
