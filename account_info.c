@@ -9,7 +9,7 @@ int account_info() {
         switch (account_info_menu_section) {
             case 0:
                 printf("Exit to main menu");
-                return main();
+                return 0;
                 break;
             case 1:
                 description_function();
