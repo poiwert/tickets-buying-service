@@ -4,21 +4,25 @@ struct Movie {
     char description[1000];
 };
 
+void display_film_catalog() {
+    printf("__________________________________\n");
+    printf("\t|               |\n");
+    printf("\t| Choose a film |\n");
+    printf("\t|               |\n");
+    printf("__________________________________\n");
+    printf("| Mission impossible: Reckoning. Part One (1)   \n");
+    printf("__________________________________\n");
+    printf("| Oppenheimer (2)  |\n");
+    printf("__________________________________\n");
+    printf("| Barby (3)   \n");
+    printf("__________________________________\n");
+    printf("\t  Exit (0)\n");
+}
+
 int film_catalog() {        
     int buy_tickets_menu_section, info, return_function;
     while(1){
-        printf("__________________________________\n");
-        printf("\t|               |\n");
-        printf("\t| Choose a film |\n");
-        printf("\t|               |\n");
-        printf("__________________________________\n");
-        printf("| Mission impossible: Reckoning. Part One (1)   \n");
-        printf("__________________________________\n");
-        printf("| Oppenheimer (2)  |\n");
-        printf("__________________________________\n");
-        printf("| Heroes of the golden masks (3)   \n");
-        printf("__________________________________\n");
-        printf("\t  Exit (0)\n");
+        display_film_catalog();
         scanf("%d", &buy_tickets_menu_section);
         
         switch (buy_tickets_menu_section) {
