@@ -1,5 +1,8 @@
-// Глобальна змінна
-int film_name;
+
+struct Movie {
+    char name[100];
+    char description[1000];
+};
 
 int film_catalog() {        
     int buy_tickets_menu_section, info, return_function;
