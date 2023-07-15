@@ -17,17 +17,17 @@ void display_categories() {
 
 int main() {
     while (1) {
-        int menu_section, info, purchase;
+        int menu_section;
         print_menu_styles();
         display_categories();
         scanf("%d", &menu_section);
 
         switch (menu_section) {
             case 1:
-                info = account_info();
+                account_info();
                 break;
             case 2:
-                purchase = buy();
+                film_catalog();
                 break;
             default:
                 printf("Input another key\n");
