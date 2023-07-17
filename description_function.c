@@ -12,5 +12,5 @@ int description_function() {
             printf("\n");
             
         }
-        return account_info();
+        account_info();
 }
