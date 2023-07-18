@@ -24,6 +24,68 @@ struct ActiveSession {
     int active_session_film_localization_id;
 };
 
+void date_selection_function(struct DateTime* dt, struct Movie movie){
+    int month_end_day;
+    start: // Label for restarting the cycle
+    while(1){
+        printf("Current date: %d-%02d-%02d\n", dt->day, dt->month, dt->year);
+        if (dt->month%2)
+        {
+            month_end_day=30;
+        }
+        if (dt->month==2)
+        {
+            month_end_day=28;
+        }
+        else
+        {
+            month_end_day=31;
+        }
+        if(dt->year==2024||dt->year==2028||dt->year==2032)
+        {
+            if (dt->month==2)
+            {
+                month_end_day=29;
+            }
+        }
+    
+        printf("Input a day in this month, when you want to go to the cinema\n");
+        printf("You can pick from %d to %d\n",dt->day,month_end_day);
+        printf("(or press '0' if you want to pick other film)\n");
+        scanf("%d", &date_session);
+        if (date_session==0)
+        {
+            film_catalog(movie);
+        }
+        
+        if (date_session<dt->day||date_session>month_end_day)
+        {
+            printf("__________________________________________\n");
+            printf("\tChoose another date\n");
+            printf("__________________________________________\n");
+            goto start; // Go to the beginning of the cycle
+        }
+        if (date_session==dt->day)
+        {
+            if (dt->hour>=20)
+            {
+                printf("We have no more tickets for today\n");
+            }
+            else
+            {
+                printf("Chosen day is - %d\n",date_session);
+                return;
+            }
+            
+        }
+        else
+        {
+            printf("Chosen day is - %d\n",date_session);
+            return;
+        }
+    }
+}
+
 void current_date_and_time_calculate(struct DateTime* dt){
     time_t currentTime;
     struct tm *localTime;
