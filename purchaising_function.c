@@ -2,6 +2,7 @@
 
 int quantity_of_tickets = 0,money_spended_summary = 0, date_session = 0,session_time,money_spended,row,seat, amount_of_booked_seats=0, film_localization_id,popcorn_menu, buy_tickets_menu_section,popcorn_store_entry;;
 int booked_seats[12];
+
 struct Movie {
     char name[100];
     char description[1000];
@@ -23,6 +24,43 @@ struct ActiveSession {
     int active_session_seat;
     int active_session_film_localization_id;
 };
+
+int popcorn_store(struct DateTime* dt, struct ActiveSession* active_session, struct Movie movie){
+    while (1){
+            printf("Popcorn and drinks (1) +150 UAH\n");
+            printf("Only popcorn (2) +120 UAH\n");
+            printf("Only drinks (3) +30 UAH\n");
+            printf("Neither (0)\n");
+            scanf("%d", &popcorn_menu);
+                switch (popcorn_menu) {
+                    case 3: 
+                        printf("Only drinks\n");
+                        money_spended += 30;
+                        popcorn_menu = 30;
+                        check_duplicate_tickets(dt,active_session,movie);
+                    return;
+                    case 2: 
+                        printf("Only popcorn\n");
+                        money_spended += 120;
+                        popcorn_menu = 120;
+                        check_duplicate_tickets(dt,active_session,movie);
+                    return;      
+                    case 1: 
+
+                        printf("Popcorn and drinks!\n");
+                        money_spended += 150;
+                        popcorn_menu = 150;
+                        check_duplicate_tickets(dt,active_session,movie);
+                    return;
+                    case 0: 
+                        popcorn_menu = 0;
+                        printf("Neither\n");
+                        check_duplicate_tickets(dt,active_session,movie);
+                    break;
+                    default: printf("Invalid input"); break;
+                }
+            }
+}
 
 int film_localization_selection(struct DateTime* dt, struct ActiveSession* active_session, struct Movie movie) {
     while (1){
