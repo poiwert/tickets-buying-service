@@ -1,4 +1,6 @@
 
+int quantity_of_tickets = 0,money_spended_summary = 0, date_session = 0,session_time,money_spended,row,seat, amount_of_booked_seats=0, film_localization_id,popcorn_menu, buy_tickets_menu_section,popcorn_store_entry;;
+
 struct Movie {
     char name[100];
     char description[1000];
