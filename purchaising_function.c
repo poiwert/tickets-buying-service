@@ -1,3 +1,26 @@
+
+struct Movie {
+    char name[100];
+    char description[1000];
+};
+
+struct DateTime {
+    int year;
+    int month;
+    int day;
+    int hour;
+    int minute;
+};
+
+struct ActiveSession {
+    char active_session_movie_name[100];
+    int active_session_date;
+    int active_session_time;
+    int active_session_row;
+    int active_session_seat;
+    int active_session_film_localization_id;
+};
+
 void purchasing_function_display_menu(){
         printf("__________________________________\n");
         printf("\t  |               |\n");
