@@ -24,6 +24,24 @@ struct ActiveSession {
     int active_session_film_localization_id;
 };
 
+int film_localization_selection(struct DateTime* dt, struct ActiveSession* active_session, struct Movie movie) {
+    while (1){
+        printf("Choose the localization of the film:\n");
+        printf("0 - Ukrainian\n");
+        printf("1 - English\n");
+        scanf("%d", &film_localization_id);
+        printf("Visit popcorn store? Yes (1), No (0):");
+            scanf("%d",&popcorn_store_entry);
+        if (popcorn_store_entry==1)
+                popcorn_store(dt,active_session, movie);
+        if (popcorn_store_entry==0)
+                purchase_accept(dt, active_session,movie);
+        if (quantity_of_tickets>0)
+            check_duplicate_tickets(dt,active_session,movie);
+        else printf("Invalid input\n");   
+    }
+}
+
 int seat_and_row_selection(struct DateTime* dt, struct ActiveSession* active_session, struct Movie movie){
     while (1) {
         printf("Choose a row\n");
