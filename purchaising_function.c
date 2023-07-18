@@ -40,6 +40,15 @@ void purchasing_function_display_menu(){
         printf("\t      Exit (0)\n");
 } 
 
-int purchasing_function() {
+int purchasing_function(struct Movie movie) {
+    int purchasing_function_menu_section;
+    struct ActiveSession* active_session = malloc(sizeof(struct ActiveSession));
+    strcpy(active_session->active_session_movie_name, movie.name); 
+    active_session->active_session_date = date_session;
+    active_session->active_session_time = session_time;
+    active_session->active_session_row = row;
+    active_session->active_session_seat = seat;
+    active_session->active_session_film_localization_id = film_localization_id;
+    struct DateTime* dt = malloc(sizeof(struct DateTime));
     purchasing_function_display_menu();
 }
