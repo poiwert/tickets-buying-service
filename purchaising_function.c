@@ -53,4 +53,22 @@ int purchasing_function(struct Movie movie) {
     active_session->active_session_film_localization_id = film_localization_id;
     struct DateTime* dt = malloc(sizeof(struct DateTime));
     purchasing_function_display_menu();
+        while (1)
+    {
+        money_spended=0;
+        current_date_and_time_calculate(dt);
+        date_selection_function(dt,movie);
+        purchasing_function_display_menu();
+        scanf("%d", &purchasing_function_menu_section);
+        switch (purchasing_function_menu_section)
+        {
+        case 1: session_time=10; money_spended=120; today_time_check(dt,movie); seat_and_row_selection(dt,active_session,movie); free(dt); free(active_session); break;
+        case 2: session_time=12; money_spended=140; today_time_check(dt,movie); seat_and_row_selection(dt,active_session,movie); free(dt); free(active_session); break;
+        case 3: session_time=16; money_spended=160; today_time_check(dt,movie); seat_and_row_selection(dt,active_session,movie); free(dt); free(active_session); break;
+        case 4: session_time=18; money_spended=180; today_time_check(dt,movie); seat_and_row_selection(dt,active_session,movie); free(dt); free(active_session); break;
+        case 5: session_time=20; money_spended=180; today_time_check(dt,movie); seat_and_row_selection(dt,active_session,movie); free(dt); free(active_session); break;
+        case 0: free(dt); free(active_session); film_catalog(movie); break;    
+        default: printf("Invalid input\n");
+        }
+    }
 }
