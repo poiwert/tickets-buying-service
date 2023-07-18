@@ -1,3 +1,4 @@
+#include <time.h>
 
 int quantity_of_tickets = 0,money_spended_summary = 0, date_session = 0,session_time,money_spended,row,seat, amount_of_booked_seats=0, film_localization_id,popcorn_menu, buy_tickets_menu_section,popcorn_store_entry;;
 
@@ -22,6 +23,26 @@ struct ActiveSession {
     int active_session_seat;
     int active_session_film_localization_id;
 };
+
+void current_date_and_time_calculate(struct DateTime* dt){
+    time_t currentTime;
+    struct tm *localTime;
+
+    // Get the current time
+    currentTime = time(NULL);
+
+    // Convert to local time
+    localTime = localtime(&currentTime);
+
+    // Get the date value
+    dt->year = localTime->tm_year + 1900;  // Add 1900 because struct tm stores the year starting from 1900
+    dt->month = localTime->tm_mon + 1;     // Add 1 because struct tm stores months starting from 0
+    dt->day = localTime->tm_mday;
+    
+    // Get the time value
+    dt->hour = localTime->tm_hour;
+    dt->minute = localTime->tm_min;
+}
 
 void purchasing_function_display_menu(){
         printf("__________________________________\n");
