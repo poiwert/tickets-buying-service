@@ -1,7 +1,7 @@
 #include <time.h>
 
 int quantity_of_tickets = 0,money_spended_summary = 0, date_session = 0,session_time,money_spended,row,seat, amount_of_booked_seats=0, film_localization_id,popcorn_menu, buy_tickets_menu_section,popcorn_store_entry;;
-
+int booked_seats[12];
 struct Movie {
     char name[100];
     char description[1000];
@@ -23,6 +23,37 @@ struct ActiveSession {
     int active_session_seat;
     int active_session_film_localization_id;
 };
+
+int seat_and_row_selection(struct DateTime* dt, struct ActiveSession* active_session, struct Movie movie){
+    while (1) {
+        printf("Choose a row\n");
+        printf("You can choose from '1' to '9'\n");
+        scanf("%d", &row);
+        if (row >= 1 && row <= 9) {
+            printf("You have chosen row %d\n", row);
+            break;
+        } else {
+            printf("There is no such a row\n");
+            printf("Try a different number\n");
+        }
+    }
+
+    while (1) {
+        printf("Now choose a seat\n");
+        printf("You can choose from '1' to '12'\n");
+        scanf("%d", &seat);
+        if (seat >= 1 && seat <= 12) {
+            printf("You have chosen seat %d\n", seat);
+            amount_of_booked_seats++;
+            booked_seats[amount_of_booked_seats-1]=seat;
+            film_localization_selection(dt,active_session,movie);
+            break;
+        } else {
+            printf("There is no such a seat\n");
+            printf("Try a different number\n");
+        }
+    }
+}
 
 void today_time_check(struct DateTime* dt, struct Movie movie){
     if (dt->day==date_session)
