@@ -37,25 +37,25 @@ int popcorn_store(struct DateTime* dt, struct ActiveSession* active_session, str
                         printf("Only drinks\n");
                         money_spended += 30;
                         popcorn_menu = 30;
-                        check_duplicate_tickets(dt,active_session,movie);
+                        purchase_accept(dt,active_session,movie);
                     return;
                     case 2: 
                         printf("Only popcorn\n");
                         money_spended += 120;
                         popcorn_menu = 120;
-                        check_duplicate_tickets(dt,active_session,movie);
+                        purchase_accept(dt,active_session,movie);
                     return;      
                     case 1: 
 
                         printf("Popcorn and drinks!\n");
                         money_spended += 150;
                         popcorn_menu = 150;
-                        check_duplicate_tickets(dt,active_session,movie);
+                        purchase_accept(dt,active_session,movie);
                     return;
                     case 0: 
                         popcorn_menu = 0;
                         printf("Neither\n");
-                        check_duplicate_tickets(dt,active_session,movie);
+                        purchase_accept(dt,active_session,movie);
                     break;
                     default: printf("Invalid input"); break;
                 }
@@ -75,7 +75,7 @@ int film_localization_selection(struct DateTime* dt, struct ActiveSession* activ
         if (popcorn_store_entry==0)
                 purchase_accept(dt, active_session,movie);
         if (quantity_of_tickets>0)
-            check_duplicate_tickets(dt,active_session,movie);
+                purchase_accept(dt, active_session,movie);
         else printf("Invalid input\n");   
     }
 }
