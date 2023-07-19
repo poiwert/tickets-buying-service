@@ -4,7 +4,7 @@
 #define const char* history_filename="History.txt"
 #define CODE_LENGTH 10
 
-void generate_QR_code(){
+void generate_QR_code(const char* data, const char* filename, int size){
 
      // Error correction level for the QR code
     enum qrcodegen_Ecc errCorLvl = qrcodegen_Ecc_LOW;
@@ -84,7 +84,7 @@ int history_add_info(struct DateTime* dt, struct ActiveSession* active_session, 
         printf("File open error\n");
         return;
     }
-    
+
     fprintf(file, "\nYour ticket code: %s\n\n Name: %s\n Date: %d-%02d-%02d\n Time: %d:00\n Row: %d\n Seat: %d\n Localization: %s\n\n\n\n_______________________________________\n", 
      code,active_session->movie_name, 
      active_session->date,
@@ -97,7 +97,7 @@ int history_add_info(struct DateTime* dt, struct ActiveSession* active_session, 
     return;
 }
 
-void ticket_creator(){
+void ticket_creator(struct DateTime* dt, struct ActiveSession* active_session, struct Movie movie){
 
     // Initialize the random number generator using the current time as a seed
     srand(time(NULL));
