@@ -1,7 +1,22 @@
 #define const char* history_filename="History.txt"
 #define CODE_LENGTH 10
 
-void generate_unique_code(){
+void generate_unique_code(char* code, int length){
+
+    // List of characters from which the code will be generated
+    const char characters[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+
+    // Calculate the number of characters in the list
+    int numCharacters = sizeof(characters) - 1;
+
+    // Generate the unique code by randomly selecting characters from the list
+    for (int i = 0; i < length; ++i) {
+        int randomIndex = rand() % numCharacters;
+        code[i] = characters[randomIndex];
+    }
+
+    // Null-terminate the code to make it a valid C-style string
+    code[length] = '\0';
     
 }
 
