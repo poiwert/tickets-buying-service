@@ -28,8 +28,11 @@ int account_info(struct Movie movie) {
                 free(active_session);
                 break;
             case 2:
-                active_session();
-                break;
+                calculate_current_date_and_time(dt);
+                active_session_function(active_session, dt);
+                free(dt);
+                free(active_session);
+            
             default:
                 printf("Input another key\n");
                 break;
