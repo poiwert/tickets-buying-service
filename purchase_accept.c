@@ -1,3 +1,9 @@
+
+
+void check_duplicate_tickets(){
+    
+}
+
 int purchase_accept(struct DateTime* dt, struct ActiveSession* active_session, struct Movie movie){
 
     check_duplicate_tickets(dt,active_session,movie);
@@ -50,5 +56,5 @@ int purchase_accept(struct DateTime* dt, struct ActiveSession* active_session, s
         else printf("Invalid input\n"); 
 
     }
-    
+
 }
