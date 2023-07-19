@@ -1,6 +1,10 @@
 #define const char* history_filename="History.txt"
 #define CODE_LENGTH 10
 
+void generate_QR_code(){
+
+}
+
 void generate_unique_code(char* code, int length){
 
     // List of characters from which the code will be generated
@@ -17,7 +21,7 @@ void generate_unique_code(char* code, int length){
 
     // Null-terminate the code to make it a valid C-style string
     code[length] = '\0';
-    
+
 }
 
 void ticket_creator(){
@@ -56,7 +60,7 @@ void ticket_creator(){
     // Generate a QR code for the ticket
     char qrFilename[20];
     snprintf(qrFilename, sizeof(qrFilename), "qrcode%d.png", quantity_of_tickets);
-    generate_QR_Code(code, qrFilename, 25);
+    generate_QR_code(code, qrFilename, 25);
 
 }
 
@@ -164,7 +168,6 @@ int purchase_accept(struct DateTime* dt, struct ActiveSession* active_session, s
             quantity_of_tickets++;
             printf("Purchase complete! Now you can check it in acctive session\n");
             ticket_creator(dt,active_session,movie);
-            film_catalog(movie);
             break;
 
         }
