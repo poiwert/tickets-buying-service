@@ -1,10 +1,5 @@
 void show_history(){
 
-    if(quantity_of_tickets==0){
-        printf("History is empty\n");
-    }
-
-    else{
         printf("Your account history\n For more convenient viewing of statistics  you can watch it in file %s in program ditrectory\n",history_filename);
         printf("______________________________________\n");
         FILE *file = fopen(history_filename, "r");
@@ -21,6 +16,5 @@ void show_history(){
         fclose(file);
         printf("______________________________________\n");
         printf("\n");
-    }
 
 }
