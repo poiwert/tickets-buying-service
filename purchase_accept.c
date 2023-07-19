@@ -76,7 +76,7 @@ void generate_unique_code(char* code, int length){
 
 }
 
-int history_add_info(struct DateTime* dt, struct ActiveSession* active_session, struct Movie movie,char code[]){
+int add_info_to_history(struct DateTime* dt, struct ActiveSession* active_session, struct Movie movie,char code[]){
 
     FILE *file = fopen(history_filename, "a");
 
@@ -98,7 +98,7 @@ int history_add_info(struct DateTime* dt, struct ActiveSession* active_session, 
     return;
 }
 
-void ticket_creator(struct DateTime* dt, struct ActiveSession* active_session, struct Movie movie){
+void create_ticket(struct DateTime* dt, struct ActiveSession* active_session, struct Movie movie){
 
     // Initialize the random number generator using the current time as a seed
     srand(time(NULL));
@@ -129,14 +129,14 @@ void ticket_creator(struct DateTime* dt, struct ActiveSession* active_session, s
 
     printf("Your ticket is on your device (%s)\n", filename);
 
-    history_add_info(dt, active_session, movie, code);
+    add_info_to_history(dt, active_session, movie, code);
 
     // Generate a QR code for the ticket
     char qrFilename[20];
     snprintf(qrFilename, sizeof(qrFilename), "qrcode%d.png", quantity_of_tickets);
     generateQRCode(code, qrFilename, 25);
     film_catalog(movie);
-    
+
 }
 
 void check_duplicate_tickets(struct DateTime* dt, struct ActiveSession* active_session, struct Movie movie){
@@ -152,7 +152,7 @@ void check_duplicate_tickets(struct DateTime* dt, struct ActiveSession* active_s
         }
 
         fclose(file);
-        purchase_accept(dt, active_session, movie);
+        accept_purchase(dt, active_session, movie);
     }
     
     char line[256];
@@ -207,7 +207,7 @@ void check_duplicate_tickets(struct DateTime* dt, struct ActiveSession* active_s
 
 }
 
-int purchase_accept(struct DateTime* dt, struct ActiveSession* active_session, struct Movie movie){
+int accept_purchase(struct DateTime* dt, struct ActiveSession* active_session, struct Movie movie){
 
     check_duplicate_tickets(dt,active_session,movie);
 
@@ -242,7 +242,7 @@ int purchase_accept(struct DateTime* dt, struct ActiveSession* active_session, s
             money_spended_summary+=money_spended;
             quantity_of_tickets++;
             printf("Purchase complete! Now you can check it in acctive session\n");
-            ticket_creator(dt,active_session,movie);
+            create_ticket(dt,active_session,movie);
             break;
 
         }
