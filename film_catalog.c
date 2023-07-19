@@ -24,8 +24,12 @@ int film_catalog() {
     int buy_tickets_menu_section;
     struct Movie movies[3]; 
 
-    strcpy(movies[0].name, "Mission impossible: Reckoning. Part One");
-    strcpy(movies[0].description, "IMF agent Ethan Hunt's new mission is to retrieve half of a key from his ally Ilsa Faust, on whom IMF has placed a bounty. He travels to the Empty Quarter in the Arabian Desert, briefly reunites with Ilsa and tells her to lay low. Back in the US, Ethan infiltrates a meeting of the Community, where officials of various intelligence agencies, including former IMF director Eugene Kittridge and DNI Denlinger, discuss an experimental AI called the Entity. Originally designed to sabotage digital systems, the Entity went rogue, expanded to potential sentience, and infiltrated all major defense and military systems and intelligence networks. Major powers are racing both to prevent sabotage and to gain control of the Entity.");
+    strcpy(movies[0].name, "Mission impossible: Reckoning. Part One\0");
+    strcpy(movies[0].description, "Age: 16+\n
+                                   Director: Christopher McQuarrie (Mission: Impossible: Fallout, Mission: Impossible: Rogue Nation, Jack Reacher)\n
+                                   Genre: Adventure, Action\n
+                                   Cast: Tom Cruise (Mission: Impossible franchise), Pom Klementiev (Guardians of the Galaxy 2 franchise), Hayley Atwell (Agent Carter series), Vanessa Kirby (Fast and Furious: Hobbs and Shaw), Rebecca Ferguson (Mission: Impossible: Rogue Nation)\n
+                                   Description: Ethan Hunt and the IMF team must track down a terrifying new weapon that threatens all of humanity if it falls into the wrong hands. With control of the future and the fate of the world at stake, a deadly race around the globe begins\n");
 
     strcpy(movies[1].name, "Oppenheimer");
     strcpy(movies[1].description, "The film's screenplay is based on the book 'American Prometheus: The Triumph and Tragedy of J. Robert Oppenheimer' written by Kai Bird and Martin Sherwin, which received the Pulitzer Prize for Biography or Autobiography. The main character is an American physicist who, under his leadership, developed the atomic bomb during World War II.");
