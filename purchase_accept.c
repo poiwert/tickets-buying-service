@@ -1,5 +1,9 @@
 const char* history_filename="History.txt";
 
+void ticket_creator(){
+    
+}
+
 void check_duplicate_tickets(struct DateTime* dt, struct ActiveSession* active_session, struct Movie movie){
 
     FILE* file = fopen(history_filename, "ab+");
@@ -65,7 +69,7 @@ void check_duplicate_tickets(struct DateTime* dt, struct ActiveSession* active_s
 
     fclose(file);
     return;
-    
+
 }
 
 int purchase_accept(struct DateTime* dt, struct ActiveSession* active_session, struct Movie movie){
