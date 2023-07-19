@@ -1,5 +1,10 @@
-int calculate_expired_session(){
-    
+int calculate_expired_session(struct ActiveSession* active_session,struct DateTime* dt){
+
+    if(dt->day==date_session && dt->hour>=active_session->time){    
+        printf("Current time: %02d:%02d\n", dt->hour, dt->minute);
+        printf("This session is expired\n");
+    }   
+
 }
 
 int active_session_function(struct ActiveSession* active_session, struct DateTime* dt){
