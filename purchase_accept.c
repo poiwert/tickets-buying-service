@@ -1,6 +1,10 @@
 #define const char* history_filename="History.txt"
 #define CODE_LENGTH 10
 
+void generate_unique_code(){
+    
+}
+
 void ticket_creator(){
 
     // Initialize the random number generator using the current time as a seed
