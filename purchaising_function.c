@@ -123,8 +123,7 @@ int seat_and_row_selection(struct DateTime* dt, struct ActiveSession* active_ses
             film_localization_selection(dt,active_session,movie);
             break;
         } else {
-            printf("There is no such a seat\n");
-            printf("Try a different number\n");
+            printf("There is no such a seat\nTry a different number\n");
         }
     }
 }
