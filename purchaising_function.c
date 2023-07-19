@@ -27,6 +27,31 @@ struct ActiveSession {
     int film_localization_id;
 };
 
+int calculate_money_from_popcorn_store(struct DateTime* dt, struct ActiveSession* active_session, struct Movie movie){
+
+    if (popcorn_menu==3)
+    {
+        money_spended += 30;
+        popcorn_menu = 30;
+        purchase_accept(dt,active_session,movie);
+    }
+
+    if (popcorn_menu==2)
+    {
+        money_spended += 120;
+        popcorn_menu = 120;
+        purchase_accept(dt,active_session,movie);
+    }
+
+    if (popcorn_menu==1)
+    {
+        money_spended += 150;
+        popcorn_menu = 150;
+        purchase_accept(dt,active_session,movie);
+    }
+    
+}
+
 int popcorn_store(struct DateTime* dt, struct ActiveSession* active_session, struct Movie movie){
     while (1){
             printf("Popcorn and drinks (1) +150 UAH\n");
@@ -37,26 +62,19 @@ int popcorn_store(struct DateTime* dt, struct ActiveSession* active_session, str
                 switch (popcorn_menu) {
                     case 3: 
                         printf("Only drinks\n");
-                        money_spended += 30;
-                        popcorn_menu = 30;
-                        purchase_accept(dt,active_session,movie);
+                        calculate_money_from_popcorn_store(dt,active_session,movie);
                     return;
                     case 2: 
                         printf("Only popcorn\n");
-                        money_spended += 120;
-                        popcorn_menu = 120;
-                        purchase_accept(dt,active_session,movie);
+                        calculate_money_from_popcorn_store(dt,active_session,movie);
                     return;      
                     case 1: 
-
                         printf("Popcorn and drinks!\n");
-                        money_spended += 150;
-                        popcorn_menu = 150;
-                        purchase_accept(dt,active_session,movie);
+                        calculate_money_from_popcorn_store(dt,active_session,movie);
                     return;
                     case 0: 
-                        popcorn_menu = 0;
                         printf("Neither\n");
+                        popcorn_menu = 0;
                         purchase_accept(dt,active_session,movie);
                     break;
                     default: printf("Invalid input"); break;
