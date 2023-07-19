@@ -14,13 +14,15 @@ int active_session_function(struct ActiveSession* active_session, struct DateTim
     }
 
     else{
-
+        printf("This is your active session\n");
+        printf("_______________________________________\n");
         printf("Name: %s\n",active_session->movie_name);
         printf("Time: %d:00\n",active_session->time);
         printf("Date: %d-%02d-%02d\n",active_session->date, dt->month, dt->year);
         printf("Row: %d\n",active_session->row);
         printf("Seat: %d\n",active_session->seat);
         printf("Localization: %s\n", ((active_session->film_localization_id == 0) ? "Ukrainian" : "English"));
+        printf("_______________________________________\n");
         calculate_expired_session(active_session,dt);
         free(dt);
     }
