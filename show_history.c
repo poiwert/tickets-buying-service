@@ -5,7 +5,7 @@ void show_history(){
     }
 
     else{
-        printf("Your account history\n");
+        printf("Your account history\nFor more convenient viewing of statistics  you can watch it in file %s in program ditrectory\n",history_filename);
         printf("______________________________________\n");
         FILE *file = fopen(history_filename, "r");
         if (file == NULL){
@@ -22,5 +22,5 @@ void show_history(){
         printf("______________________________________\n");
         printf("\n");
     }
-    
+
 }
