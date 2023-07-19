@@ -1,7 +1,9 @@
 #include <time.h>
 
-int quantity_of_tickets = 0,money_spended_summary = 0, date_session = 0,session_time,money_spended,row,seat, amount_of_booked_seats=0, film_localization_id,popcorn_menu, buy_tickets_menu_section,popcorn_store_entry;;
-int booked_seats[12];
+const int AMOUNT_OF_ROWS = 9;
+const int AMOUNT_OF_SEATS = 12;
+
+int quantity_of_tickets = 0,money_spended_summary = 0, date_session = 0,session_time,money_spended,row,seat, film_localization_id,popcorn_menu, buy_tickets_menu_section,popcorn_store_entry;
 
 struct Movie {
     char name[100];
@@ -17,12 +19,12 @@ struct DateTime {
 };
 
 struct ActiveSession {
-    char active_session_movie_name[100];
-    int active_session_date;
-    int active_session_time;
-    int active_session_row;
-    int active_session_seat;
-    int active_session_film_localization_id;
+    char movie_name[100];
+    int date;
+    int time;
+    int row;
+    int seat;
+    int film_localization_id;
 };
 
 int popcorn_store(struct DateTime* dt, struct ActiveSession* active_session, struct Movie movie){
@@ -83,9 +85,9 @@ int film_localization_selection(struct DateTime* dt, struct ActiveSession* activ
 int seat_and_row_selection(struct DateTime* dt, struct ActiveSession* active_session, struct Movie movie){
     while (1) {
         printf("Choose a row\n");
-        printf("You can choose from '1' to '9'\n");
+        printf("You can choose from '1' to '%d'\n", AMOUNT_OF_ROWS);
         scanf("%d", &row);
-        if (row >= 1 && row <= 9) {
+        if (row >= 1 && row <= AMOUNT_OF_ROWS) {
             printf("You have chosen row %d\n", row);
             break;
         } else {
@@ -96,12 +98,10 @@ int seat_and_row_selection(struct DateTime* dt, struct ActiveSession* active_ses
 
     while (1) {
         printf("Now choose a seat\n");
-        printf("You can choose from '1' to '12'\n");
+        printf("You can choose from '1' to '%d'\n",AMOUNT_OF_SEATS);
         scanf("%d", &seat);
-        if (seat >= 1 && seat <= 12) {
+        if (seat >= 1 && seat <= AMOUNT_OF_SEATS) {
             printf("You have chosen seat %d\n", seat);
-            amount_of_booked_seats++;
-            booked_seats[amount_of_booked_seats-1]=seat;
             film_localization_selection(dt,active_session,movie);
             break;
         } else {
@@ -227,12 +227,12 @@ void purchasing_function_display_menu(){
 int purchasing_function(struct Movie movie) {
     int purchasing_function_menu_section;
     struct ActiveSession* active_session = malloc(sizeof(struct ActiveSession));
-    strcpy(active_session->active_session_movie_name, movie.name); 
-    active_session->active_session_date = date_session;
-    active_session->active_session_time = session_time;
-    active_session->active_session_row = row;
-    active_session->active_session_seat = seat;
-    active_session->active_session_film_localization_id = film_localization_id;
+    strcpy(active_session->movie_name, movie.name); 
+    active_session->date = date_session;
+    active_session->time = session_time;
+    active_session->row = row;
+    active_session->seat = seat;
+    active_session->film_localization_id = film_localization_id;
     struct DateTime* dt = malloc(sizeof(struct DateTime));
     purchasing_function_display_menu();
         while (1)
