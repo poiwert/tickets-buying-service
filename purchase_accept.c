@@ -76,7 +76,25 @@ void generate_unique_code(char* code, int length){
 }
 
 int history_add_info(struct DateTime* dt, struct ActiveSession* active_session, struct Movie movie,char code[]){
+
+    FILE *file = fopen(history_filename, "a");
+
+    if (file == NULL)
+    {
+        printf("File open error\n");
+        return;
+    }
     
+    fprintf(file, "\nYour ticket code: %s\n\n Name: %s\n Date: %d-%02d-%02d\n Time: %d:00\n Row: %d\n Seat: %d\n Localization: %s\n\n\n\n_______________________________________\n", 
+     code,active_session->movie_name, 
+     active_session->date,
+     dt->month, dt->year,
+     active_session->time,
+     active_session->row,
+     active_session->seat,
+     ((active_session->film_localization_id == 0) ? "Ukrainian" : "English"));
+    fclose(file);
+    return;
 }
 
 void ticket_creator(){
