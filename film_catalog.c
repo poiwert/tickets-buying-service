@@ -38,10 +38,13 @@ int film_catalog() {
                                    Cast: Cillian Murphy (TV series 'Pointy Hats', 'Inception'), Emily Blunt (A Quiet Place dilogy), Robert Downey Jr. (Iron Man), Florence Pugh (Little Women, Black Widow), Matt Damon (The Outsiders, Ocean's Eleven)\n
                                    Description: It is based on the 2005 biography American Prometheus by Kai Bird and Martin J. Sherwin about J. Robert Oppenheimer, a theoretical physicist who was pivotal in developing the first nuclear weapons as part of the Manhattan Project and thereby ushering in the Atomic Age\n");
    
-    strcpy(movies[2].name, "Barby");
-    strcpy(movies[2].description, "Family comedy, telling the story of the world's most famous doll - what if Barbie were a real girl living among us? Too imperfect for the perfect world of Barbiedom, she ends up being banished and encounters the harsh reality of the human world.");
-
-    while (1) {
+    strcpy(movies[2].name, "Barby\0");
+    strcpy(movies[2].description, "Age: 12+\n
+                                   Director: Greta Gerwig (Little Women, Lady Bird)\n
+                                   Genre: Adventure, Comedy, Romance\n
+                                   Cast: Margot Robbie (Birds of Prey and The Fantastic Harley Quinn, Once Upon a Time in Hollywood, Babel), Ryan Gosling (Blade Runner 2049, La La Land), Kate McKinnon, Ariana Greenblatt, Michael Cera and others\n
+                                   Description: Barbie meets with Weird Barbie, an outcast in Barbieland, who tells her she and everyone who lives in Barbieland is actually a doll. In order to recover from her mysterious affliction, Barbie must travel into the 'Real World' and find Sasha, the girl who owns her\n");    while (1) {
+        
         display_film_catalog();
         scanf("%d", &buy_tickets_menu_section);
 
