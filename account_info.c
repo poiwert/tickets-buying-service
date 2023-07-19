@@ -8,31 +8,35 @@ int account_info(struct Movie movie) {
     active_session->seat = seat;
     active_session->film_localization_id = film_localization_id;
     struct DateTime* dt = malloc(sizeof(struct DateTime));
-    
-        while (1) {
-        printf("(Enter '0' to go back to the main menu)\n"); 
+    while (1) {
+        printf("(Enter '0' to go back to the main menu)\n");
         printf("--Pick info that you want to see--\n");
-        printf("| Description(1) Active session(2) |\n");
+        printf("| Description(1) Active session(2) History(3) |\n");
         scanf("%d", &account_info_menu_section);
-        
+
         switch (account_info_menu_section) {
             case 0:
-               printf("Exit to main menu");
+                printf("Exit to main menu");
                 free(active_session);
                 main(movie);
                 free(dt);
                 free(active_session);
+                break;
             case 1:
-               description_function(movie);
+                description_function(movie);
                 free(dt);
                 free(active_session);
                 break;
             case 2:
-                calculate_current_date_and_time(dt);
                 active_session_function(active_session, dt);
                 free(dt);
                 free(active_session);
-            
+                break;
+            case 3:
+                show_history();
+                free(dt);
+                free(active_session);
+                break;
             default:
                 printf("Input another key\n");
                 break;
