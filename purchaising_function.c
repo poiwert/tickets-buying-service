@@ -129,14 +129,10 @@ int seat_and_row_selection(struct DateTime* dt, struct ActiveSession* active_ses
 }
 
 void today_time_check(struct DateTime* dt, struct Movie movie){
-    if (dt->day==date_session)
-    {
-        if (dt->hour>=session_time)
-        {
-            printf("Current time: %02d:%02d\n", dt->hour, dt->minute);
-            printf("This time is expired\n");
-            purchasing_function(movie);
-        }
+    if (dt->day==date_session && dt->hour>=session_time){
+        printf("Current time: %02d:%02d\n", dt->hour, dt->minute);
+        printf("This time is expired\n");
+        purchasing_function(movie);
     }
 }
 
