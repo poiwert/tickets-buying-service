@@ -17,9 +17,11 @@ int account_info(struct Movie movie) {
         
         switch (account_info_menu_section) {
             case 0:
-                printf("Exit to main menu");
-                main();
-                break;
+               printf("Exit to main menu");
+                free(active_session);
+                main(movie);
+                free(dt);
+                free(active_session);
             case 1:
                 description_function();
                 break;
