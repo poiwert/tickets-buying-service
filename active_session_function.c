@@ -1,3 +1,7 @@
+int calculate_expired_session(){
+    
+}
+
 int active_session_function(struct ActiveSession* active_session, struct DateTime* dt){
     
     if (quantity_of_tickets==0){
