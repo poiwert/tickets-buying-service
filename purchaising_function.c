@@ -90,7 +90,7 @@ int popcorn_store(struct DateTime* dt, struct ActiveSession* active_session, str
 
 }
 
-int film_localization_selection(struct DateTime* dt, struct ActiveSession* active_session, struct Movie movie) {
+int selection_film_localization(struct DateTime* dt, struct ActiveSession* active_session, struct Movie movie) {
     
     while (1){
         printf("Choose the localization of the film:\n");
@@ -111,7 +111,7 @@ int film_localization_selection(struct DateTime* dt, struct ActiveSession* activ
 
 }
 
-int seat_and_row_selection(struct DateTime* dt, struct ActiveSession* active_session, struct Movie movie){
+int selection_seat_and_row(struct DateTime* dt, struct ActiveSession* active_session, struct Movie movie){
 
     while (1) {
         printf("Choose a row\n");
@@ -131,7 +131,7 @@ int seat_and_row_selection(struct DateTime* dt, struct ActiveSession* active_ses
         scanf("%d", &seat);
         if (seat >= 1 && seat <= AMOUNT_OF_SEATS) {
             printf("You have chosen seat %d\n", seat);
-            film_localization_selection(dt,active_session,movie);
+            selection_film_localization(dt,active_session,movie);
             break;
         } else {
             printf("There is no such a seat\nTry a different number\n");
@@ -140,7 +140,7 @@ int seat_and_row_selection(struct DateTime* dt, struct ActiveSession* active_ses
 
 }
 
-void today_time_check(struct DateTime* dt, struct Movie movie){
+void check_time_today(struct DateTime* dt, struct Movie movie){
 
     if (dt->day==date_session && dt->hour>=session_time){
         printf("Current time: %02d:%02d\n", dt->hour, dt->minute);
@@ -150,7 +150,7 @@ void today_time_check(struct DateTime* dt, struct Movie movie){
 
 }
 
-void date_selection_function(struct DateTime* dt, struct Movie movie){
+void selection_date_function(struct DateTime* dt, struct Movie movie){
     int month_end_day;
 
     start: // Label for restarting the cycle
@@ -236,7 +236,7 @@ void calculate_current_date_and_time(struct DateTime* dt){
 
 }
 
-void purchasing_function_display_menu(){
+void display_menu_purchaising_function(){
 
         printf("__________________________________\n");
         printf("\t  |               |\n");
@@ -278,21 +278,21 @@ int purchasing_function(struct Movie movie) {
 
         money_spended=0;
         calculate_current_date_and_time(dt);
-        date_selection_function(dt,movie);
-        purchasing_function_display_menu();
+        selection_date_function(dt,movie);
+        display_menu_purchaising_function();
         scanf("%d", &purchasing_function_menu_section);
 
         switch (purchasing_function_menu_section)
         {
-        case 1: session_time=10; money_spended=120; today_time_check(dt,movie); seat_and_row_selection(dt,active_session,movie); free(dt); free(active_session); break;
+        case 1: session_time=10; money_spended=120; check_time_today(dt,movie); selection_seat_and_row(dt,active_session,movie); free(dt); free(active_session); break;
         
-        case 2: session_time=12; money_spended=140; today_time_check(dt,movie); seat_and_row_selection(dt,active_session,movie); free(dt); free(active_session); break;
+        case 2: session_time=12; money_spended=140; check_time_today(dt,movie); selection_seat_and_row(dt,active_session,movie); free(dt); free(active_session); break;
         
-        case 3: session_time=16; money_spended=160; today_time_check(dt,movie); seat_and_row_selection(dt,active_session,movie); free(dt); free(active_session); break;
+        case 3: session_time=16; money_spended=160; check_time_today(dt,movie); selection_seat_and_row(dt,active_session,movie); free(dt); free(active_session); break;
         
-        case 4: session_time=18; money_spended=180; today_time_check(dt,movie); seat_and_row_selection(dt,active_session,movie); free(dt); free(active_session); break;
+        case 4: session_time=18; money_spended=180; check_time_today(dt,movie); selection_seat_and_row(dt,active_session,movie); free(dt); free(active_session); break;
         
-        case 5: session_time=20; money_spended=180; today_time_check(dt,movie); seat_and_row_selection(dt,active_session,movie); free(dt); free(active_session); break;
+        case 5: session_time=20; money_spended=180; check_time_today(dt,movie); selection_seat_and_row(dt,active_session,movie); free(dt); free(active_session); break;
         
         case 0: free(dt); free(active_session); film_catalog(movie); break;    
 
