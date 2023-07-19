@@ -121,8 +121,7 @@ int seat_and_row_selection(struct DateTime* dt, struct ActiveSession* active_ses
             printf("You have chosen row %d\n", row);
             break;
         } else {
-            printf("There is no such a row\n");
-            printf("Try a different number\n");
+            printf("There is no such a seat\nTry a different number\n");
         }
     }
 
@@ -260,10 +259,11 @@ void purchasing_function_display_menu(){
 
 int purchasing_function(struct Movie movie) {
 
+
     int purchasing_function_menu_section;
 
     struct ActiveSession* active_session = malloc(sizeof(struct ActiveSession));
-    
+
     strcpy(active_session->movie_name, movie.name); 
     active_session->date = date_session;
     active_session->time = session_time;
@@ -272,7 +272,6 @@ int purchasing_function(struct Movie movie) {
     active_session->film_localization_id = film_localization_id;
 
     struct DateTime* dt = malloc(sizeof(struct DateTime));
-    purchasing_function_display_menu();
 
     while (1)
     {
