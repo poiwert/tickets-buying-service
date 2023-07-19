@@ -1,10 +1,11 @@
 #include "qrcodegen.h" 
 #include "stb_image_write.h" 
+#include <qrcodegen.h> 
 
 #define const char* history_filename="History.txt"
 #define CODE_LENGTH 10
 
-void generate_QR_code(const char* data, const char* filename, int size){
+void generateQRCode(const char* data, const char* filename, int size){
 
      // Error correction level for the QR code
     enum qrcodegen_Ecc errCorLvl = qrcodegen_Ecc_LOW;
@@ -133,7 +134,7 @@ void ticket_creator(struct DateTime* dt, struct ActiveSession* active_session, s
     // Generate a QR code for the ticket
     char qrFilename[20];
     snprintf(qrFilename, sizeof(qrFilename), "qrcode%d.png", quantity_of_tickets);
-    generate_QR_code(code, qrFilename, 25);
+    generateQRCode(code, qrFilename, 25);
 
 }
 
