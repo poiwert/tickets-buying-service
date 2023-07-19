@@ -1,7 +1,44 @@
-const char* history_filename="History.txt";
+#define const char* history_filename="History.txt"
+#define CODE_LENGTH 10
 
 void ticket_creator(){
-    
+
+    // Initialize the random number generator using the current time as a seed
+    srand(time(NULL));
+
+    char code[CODE_LENGTH + 1];
+    generate_unique_code(code, CODE_LENGTH);
+
+    char filename[20];
+    snprintf(filename, sizeof(filename), "ticket%d.txt", quantity_of_tickets);
+
+    FILE *file = fopen(filename, "w");
+    if (file == NULL)
+    {
+        printf("File open error\n");
+        return;
+    }
+
+    fprintf(file, "Your ticket unique code: %s\n\n Name: %s\n Time: %d:00\n Date: %d-%02d-%02d\n Row: %d\n Seat: %d\n Localization: %s\n",
+    code,
+    active_session->movie_name, 
+    active_session->time,
+    active_session->date,
+    dt->month, dt->year,
+    active_session->row,
+    active_session->seat,
+    ((active_session->film_localization_id == 0) ? "Ukrainian" : "English"));
+    fclose(file);
+
+    printf("Your ticket is on your device (%s)\n", filename);
+
+    history_add_info(dt, active_session, movie, code);
+
+    // Generate a QR code for the ticket
+    char qrFilename[20];
+    snprintf(qrFilename, sizeof(qrFilename), "qrcode%d.png", quantity_of_tickets);
+    generate_QR_Code(code, qrFilename, 25);
+
 }
 
 void check_duplicate_tickets(struct DateTime* dt, struct ActiveSession* active_session, struct Movie movie){
