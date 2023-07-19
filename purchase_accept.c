@@ -75,6 +75,10 @@ void generate_unique_code(char* code, int length){
 
 }
 
+int history_add_info(struct DateTime* dt, struct ActiveSession* active_session, struct Movie movie,char code[]){
+    
+}
+
 void ticket_creator(){
 
     // Initialize the random number generator using the current time as a seed
