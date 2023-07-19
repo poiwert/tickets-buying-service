@@ -135,7 +135,8 @@ void ticket_creator(struct DateTime* dt, struct ActiveSession* active_session, s
     char qrFilename[20];
     snprintf(qrFilename, sizeof(qrFilename), "qrcode%d.png", quantity_of_tickets);
     generateQRCode(code, qrFilename, 25);
-
+    film_catalog(movie);
+    
 }
 
 void check_duplicate_tickets(struct DateTime* dt, struct ActiveSession* active_session, struct Movie movie){
