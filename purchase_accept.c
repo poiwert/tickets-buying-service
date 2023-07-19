@@ -1,7 +1,58 @@
+#include "qrcodegen.h" 
+#include "stb_image_write.h" 
+
 #define const char* history_filename="History.txt"
 #define CODE_LENGTH 10
 
 void generate_QR_code(){
+
+     // Error correction level for the QR code
+    enum qrcodegen_Ecc errCorLvl = qrcodegen_Ecc_LOW;
+
+    // QR code buffers
+    uint8_t qrcode[qrcodegen_BUFFER_LEN_MAX];
+    uint8_t tempBuffer[qrcodegen_BUFFER_LEN_MAX];
+
+    // Generate the QR code
+    bool ok = qrcodegen_encodeText(data, tempBuffer, qrcode, errCorLvl, qrcodegen_VERSION_MIN, qrcodegen_VERSION_MAX, qrcodegen_Mask_AUTO, true);
+    if (!ok) {
+        printf("QR code generation error\n");
+        return;
+    }
+
+    // Allocate memory for the image buffer
+    uint8_t* imageBuffer = (uint8_t*)malloc(size * size * 3);
+    memset(imageBuffer, 255, size * size * 3); // Set the buffer to white color (255)
+
+    int r, g, b;
+    do {
+        r = rand() % 100; // Generate a random value for the red channel (0-100) (255 max = white)
+        g = rand() % 100; // Generate a random value for the green channel (0-100) (255 max = white)
+        b = rand() % 100; // Generate a random value for the blue channel (0-100) (255 max = white)
+    } while (r != g && r != b && g != b); // Check if all color channels are not equal
+
+    // Fill the image buffer with the QR code pattern
+    for (int y = 0; y < qrcodegen_getSize(qrcode) + 4; ++y) {
+        for (int x = 0; x < qrcodegen_getSize(qrcode) + 4; ++x) {
+            bool module = qrcodegen_getModule(qrcode, x - 2, y - 2);
+            uint8_t color = module ? 0 : 150; // Set black (0) for QR code modules and grey (150) (255 max = white) for the background
+            int offset = (y * size + x) * 3;
+            imageBuffer[offset] = module ? r : color; // R
+            imageBuffer[offset + 1] = module ? g : color; // G
+            imageBuffer[offset + 2] = module ? b : color; // B
+        }
+    }
+
+    // Write the image buffer to a JPEG file
+    int success = stbi_write_jpg(filename, size, size, 3, imageBuffer, 10000);
+    free(imageBuffer);
+
+    if (!success) {
+        printf("Failed to save the QR code image\n");
+        return;
+    }
+
+    printf("Your QR code is saved in the file %s.\n", filename);
 
 }
 
