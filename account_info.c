@@ -23,7 +23,9 @@ int account_info(struct Movie movie) {
                 free(dt);
                 free(active_session);
             case 1:
-                description_function();
+               description_function(movie);
+                free(dt);
+                free(active_session);
                 break;
             case 2:
                 active_session();
